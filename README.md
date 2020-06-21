@@ -1,24 +1,8 @@
-# README
+# Lemoney Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to run
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. First, run: `docker-compose up -d web`
+1. Then run: `docker-compose run --rm web rake db:create`
+1. Last, run it: `docker-compose run --rm web rake db:migrate`
+1. Access `http://localhost:3000`
