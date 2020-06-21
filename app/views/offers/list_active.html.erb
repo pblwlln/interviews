@@ -1,0 +1,17 @@
+<div class="row">
+<% @offers.each do |offer| %>
+  <div class="col-md-6 mb-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <% if offer.premium %>
+          <span class="badge badge-danger custom-badge-position">Premium</span>
+        <% end %>
+        <h5 class="card-title"><%= offer.advertiser_name %></h5>
+      </div>
+      <div class="card-footer">
+        <a class="btn <%= offer.premium ? 'btn-success' : 'btn-dark' %>" href="<%= offer.url %>">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

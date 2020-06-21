@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @offers = Offer.all
+    @offers = Offer.order(:created_at).all
   end
 
   # GET /offers/new
@@ -81,6 +81,11 @@ class OffersController < ApplicationController
       format.html { redirect_to offers_url, notice: 'Offer was successfully enabled.' }
       format.json { render :show, status: :ok, location: @offer }
     end
+  end
+
+  def list_active
+    active_offers_query = 'state = ? AND starts_at <= ? AND (ends_at IS NULL OR ends_at <= ?)'
+    @offers = Offer.where(active_offers_query, true, DateTime.now, DateTime.now).order(premium: :desc)
   end
 
   private

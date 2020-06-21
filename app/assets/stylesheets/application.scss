@@ -16,5 +16,15 @@
  @import "bootstrap";
 
  .pt-3 {
-    padding-top: $spacer !important;
-  }
+  padding-top: $spacer !important;
+}
+
+.mb-4 {
+  margin-bottom: $spacer * 1.5 !important;
+}
+
+.custom-badge-position {
+  position: absolute;
+  top: -$spacer*0.5;
+  right: $spacer;
+}
