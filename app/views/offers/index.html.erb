@@ -1,0 +1,48 @@
+<div class="row align-items-center">
+  <div class="col-md-8">
+    <h1 class="text-white bg-dark">Offers</h1>
+  </div>
+  <div class="col-md-4 text-right">
+    <%= link_to 'New Offer', new_offer_path, class: 'btn btn-success' %>
+  </div>
+</div>
+
+<% if notice %>
+<div class="alert alert-success" role="alert">
+  <%= notice %>
+</div>
+<% end %>
+
+<table class="table table-stripped table-hover table-dark">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Advertiser name</th>
+      <th>URL</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.id %></td>
+        <td><%= offer.advertiser_name %></td>
+        <td><%= offer.url %></td>
+        <td><%= offer.state ? 'Enabled' : 'Disabled' %></td>
+        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+        <td>
+          <%=
+            if offer.state
+              link_to 'Disable', disable_offer_path(offer), method: :put
+            else
+              link_to 'Enable', enable_offer_path(offer), method: :put
+            end
+          %>
+        </td>
+        <td><%= link_to 'Destroy', offer, method: :delete, class: 'text-danger', data: { confirm: 'You are destroying this offer. Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

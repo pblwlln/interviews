@@ -1,0 +1,58 @@
+<%= form_with(model: offer, local: true) do |form| %>
+  <% if offer.errors.any? %>
+    <div class="alert alert-warning" id="error_explanation">
+      <h4 class="alert-heading"><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h4>
+
+      <ul>
+        <% offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="form-group text-white col-md-6">
+      <%= form.label :advertiser_name %>
+      <%= form.text_field :advertiser_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group text-white col-md-6">
+      <%= form.label :url %>
+      <%= form.text_field :url, class: 'form-control' %>
+    </div>
+  </div>
+
+  
+  <div class="form-group text-white">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="form-group text-white col-md-6 col-md-6">
+      <%= form.label :starts_at %>
+      <%= form.datetime_select :starts_at, class: 'form-control' %>
+    </div>
+
+    <div class="form-group text-white">
+      <%= form.label :ends_at %>
+      <%= form.datetime_select :ends_at, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-check text-white">
+    <input <%= offer.id != nil && offer.ends_at == nil ? 'checked="checked"' : '' %> type="checkbox" name="offer[never_ends]" value="1" id="offer_never_ends" class="form-check-input" />
+    <%= form.label :never_ends, class: 'form-check-label' %>
+  </div>
+
+  <div class="form-check text-white">
+    <%= form.check_box :premium, class: 'form-check-input' %>
+    <%= form.label :premium, class: 'form-check-label' %>
+  </div>
+
+  <hr class="bg-white">
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
