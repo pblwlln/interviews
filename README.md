@@ -1,10 +1,13 @@
 # Lemoney Test
 
-## How to run
+## To run this project, execute the following commands in your terminal
 
-1. Second, run: `docker-compose run --rm web rake db:create`
-2. Then, run: `docker-compose run --rm web rake db:migrate`
-3. Last, run it: `docker-compose run --rm web rails assets:precompile`
-4. First, run: `docker-compose up -d web`
-5. Access `http://localhost:3000/offers` to manage offers
-6. Access `http://localhost:3000/` to view them
+1. `docker-compose run --rm web rake db:create`
+2. `docker-compose run --rm web rake db:migrate`
+3. `docker-compose run --rm web rails assets:precompile`
+4. `docker-compose up -d web`
+
+## To check out this feature
+
+1. Access `http://localhost:3000/offers` to manage offers
+2. Access `http://localhost:3000/` to view them
